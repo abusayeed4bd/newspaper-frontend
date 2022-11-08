@@ -1,6 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+
+
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Home from './components/Pages/Home/Home';
 import Navbar from './components/Shared/Navbar';
 import Login from './components/Pages/UserAccess/Login';
@@ -17,6 +19,9 @@ function App() {
         <Route path="/registration" element={<Registration></Registration>} />
 
       </Routes>
+
+
+      <ToastContainer />
     </div>
   );
 }

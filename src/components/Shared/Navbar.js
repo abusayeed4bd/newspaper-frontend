@@ -1,8 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from "../../assets/image/news-logo.png"
+import auth from './../../firebase.init';
+import { useAuthState } from "react-firebase-hooks/auth"
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+
+    const [user] = useAuthState(auth);
+
+    const handleSignout = () => {
+        signOut(auth);
+    }
     return (
         <div>
             {/* logo  */}
@@ -13,9 +22,14 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div className="flex-none">
-                    <Link to="/login" className="btn btn-square btn-ghost">
-                        Login
-                    </Link>
+                    {
+                        user ? <button onClick={handleSignout} className="btn btn-square btn-ghost">
+                            sign out
+                        </button> :
+                            <Link to="/login" className="btn btn-square btn-ghost">
+                                Login
+                            </Link>
+                    }
                 </div>
             </div>
 
