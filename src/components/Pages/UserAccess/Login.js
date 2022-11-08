@@ -1,11 +1,27 @@
 import React from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import SocialButton from './SocialButton';
+import auth from './../../../firebase.init';
 
 const Login = () => {
 
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const handleLogin = e => {
         e.preventDefault();
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        signInWithEmailAndPassword(email, password);
+
+        e.target.reset();
     }
     return (
         <div>
@@ -29,8 +45,18 @@ const Login = () => {
                             <input name="password" type="password" placeholder="Password" className="input input-bordered border-primary rounded-sm" required />
                         </div>
 
+                        {/* error message================================ */}
+                        {
+                            error && <p className='text-error text-center'>{error.message}</p>
+                        }
+                        {/* error message================================ */}
+
+
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary rounded-sm text-white">Login</button>
+                            {
+                                loading ? <input type="submit" className="btn btn-primary rounded-sm text-white" value="Loading..." /> :
+                                    <input type="submit" className="btn btn-primary rounded-sm text-white" value="Login" />
+                            }
                         </div>
                     </form>
                     <div className="flex flex-col w-full border-opacity-50">
