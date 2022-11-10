@@ -7,6 +7,10 @@ import Home from './components/Pages/Home/Home';
 import Navbar from './components/Shared/Navbar';
 import Login from './components/Pages/UserAccess/Login';
 import Registration from './components/Pages/UserAccess/Registration';
+import Footer from './components/Shared/Footer';
+import Dashboard from './components/Pages/Dashboard/Dashboard';
+import AddNews from './components/Pages/Dashboard/AddNews';
+import ManageUsers from './components/Pages/Dashboard/ManageUsers';
 
 function App() {
   return (
@@ -18,9 +22,17 @@ function App() {
         <Route path="/login" element={<Login></Login>} />
         <Route path="/registration" element={<Registration></Registration>} />
 
+        {/* ========================== */}
+
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+
+          <Route index path="" element={<AddNews></AddNews>} />
+          <Route path="manageuser" element={<ManageUsers></ManageUsers>} />
+        </Route>
+
       </Routes>
 
-
+      <Footer />
       <ToastContainer />
     </div>
   );

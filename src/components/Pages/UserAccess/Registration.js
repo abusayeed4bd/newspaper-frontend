@@ -81,6 +81,8 @@ const Registration = () => {
                     <SocialButton></SocialButton>
                 </div>
             </div>
+
+
         </div>
     );
 };

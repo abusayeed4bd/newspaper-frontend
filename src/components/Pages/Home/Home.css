@@ -1,0 +1,9 @@
+.card.image-full:before {
+    position: relative;
+    content: "";
+    z-index: 10;
+    --tw-bg-opacity: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.108), rgba(0, 0, 0, 0.673));
+    opacity: 0.75;
+    border-radius: 0px;
+}

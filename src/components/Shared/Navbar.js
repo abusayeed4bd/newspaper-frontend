@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <div>
             {/* logo  */}
-            <div className="navbar bg-base-100 md:px-12 items-center">
+            <div className="navbar bg-base-100 md:px-24 items-center">
                 <div className="flex-1">
                     <Link to="/">
                         <img src={logo} alt="" />
@@ -23,10 +23,10 @@ const Navbar = () => {
                 </div>
                 <div className="flex-none">
                     {
-                        user ? <button onClick={handleSignout} className="btn btn-square btn-ghost">
+                        user ? <button onClick={handleSignout} className="btn  btn-ghost">
                             sign out
                         </button> :
-                            <Link to="/login" className="btn btn-square btn-ghost">
+                            <Link to="/login" className="btn  btn-ghost">
                                 Login
                             </Link>
                     }
@@ -34,7 +34,7 @@ const Navbar = () => {
             </div>
 
             {/* menu bar */}
-            <div style={{ position: "sticky" }} className="navbar bg-primary text-white !py-2 md:px-12  ">
+            <div className="sticky top-0 z-30 navbar bg-primary text-white !py-2 md:px-24  ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +70,7 @@ const Navbar = () => {
                         <li><Link to="/">Internationl</Link></li>
                         <li><Link to="/">National</Link></li>
                         <li><Link to="/">Sports</Link></li>
-                        <li><Link to="/">Entertainment</Link></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
 
 
                     </ul>
