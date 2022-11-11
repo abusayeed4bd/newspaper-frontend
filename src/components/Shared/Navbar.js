@@ -70,7 +70,7 @@ const Navbar = () => {
                         <li><Link to="/">Internationl</Link></li>
                         <li><Link to="/">National</Link></li>
                         <li><Link to="/">Sports</Link></li>
-                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
 
 
                     </ul>

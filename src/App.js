@@ -12,6 +12,9 @@ import Dashboard from './components/Pages/Dashboard/Dashboard';
 import AddNews from './components/Pages/Dashboard/AddNews';
 import ManageUsers from './components/Pages/Dashboard/ManageUsers';
 import Post from './components/Pages/news/Post';
+import NotFound from './components/Shared/NotFound';
+import ScrollToTop from './components/Shared/ScrollToTop';
+import RequireAuth from './components/Hooks/RequireAuth';
 
 function App() {
   return (
@@ -29,16 +32,19 @@ function App() {
 
         {/* ========================== */}
 
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+        <Route path="/dashboard" element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
 
-          <Route index path="" element={<AddNews></AddNews>} />
-          <Route path="manageuser" element={<ManageUsers></ManageUsers>} />
+          <Route index path="" element={<RequireAuth><AddNews></AddNews></RequireAuth>} />
+          <Route path="manageuser" element={<RequireAuth><ManageUsers></ManageUsers></RequireAuth>} />
         </Route>
+
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
 
       <Footer />
       <ToastContainer />
+      <ScrollToTop />
     </div>
   );
 }

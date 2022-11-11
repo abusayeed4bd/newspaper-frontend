@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 const International = () => {
-    const { data: news, isLoading } = useQuery('products', () => fetch('fakedata.json')
-        .then(res => res.json()))
+    const [news, setNews] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        fetch("http://localhost:5000/news")
+            .then(res => res.json())
+            .then(data => {
+                setNews(data)
+                // setLoading(false)
+            })
+    }, [])
 
-    if (isLoading) {
-        return "Loading";
-    }
     return (
         <div>
             {
                 news.map(n => <>
 
-                    <div className="card w-full card-side bg-base-100 shadow-sm rounded-none my-1">
-                        <figure><img className='w-[200px]' src={n.image} alt="Movie" /></figure>
-                        <div className="card-body p-1">
-                            <h2 className="card-title">New movie is released!</h2>
-                            <p>Click the button to watch on Jetflix app.</p>
+                    <div className='flex my-2 border-b border-dotted pb-1'>
+                        <div className='w-[30%] mr-2'>
+                            <img className='w-[200px] h-[100px]' src={n.image} alt="" />
+                        </div>
+                        <div className='w-[70%]'>
+                            <Link to={`news/${n._id}`} className='text-lg font-medium hover:underline'>{n.title}</Link>
 
                         </div>
                     </div>
