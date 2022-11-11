@@ -5,6 +5,8 @@ import Features2 from './HomeSections/Features2';
 import International from './HomeSections/International';
 
 const Home = () => {
+
+
     return (
         <div className=' md:px-24 pt-2 '>
             <div className="feature-post  grid grid-cols-1 lg:grid-cols-2">

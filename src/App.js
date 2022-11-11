@@ -11,6 +11,7 @@ import Footer from './components/Shared/Footer';
 import Dashboard from './components/Pages/Dashboard/Dashboard';
 import AddNews from './components/Pages/Dashboard/AddNews';
 import ManageUsers from './components/Pages/Dashboard/ManageUsers';
+import Post from './components/Pages/news/Post';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home></Home>} />
+
+        <Route path="/news/:id" element={<Post></Post>}></Route>
+
+        {/* ===================================== */}
         <Route path="/login" element={<Login></Login>} />
         <Route path="/registration" element={<Registration></Registration>} />
 
