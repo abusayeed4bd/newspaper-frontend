@@ -28,9 +28,7 @@ const AddNews = () => {
     console.log(date)
     // ============================================================== end
 
-    if (content) {
-        document.getElementById("news").innerHTML = content; //to check the result for coding time
-    }
+
 
     const handleAddNews = e => {
         e.preventDefault();

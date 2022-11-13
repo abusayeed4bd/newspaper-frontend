@@ -1,36 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
+import Feature2Skeleton from '../../../SkeletonAnimation/Feature2Skeleton';
 
 const Features2 = () => {
-    // const { data: news, isLoading } = useQuery('products', () => fetch('http://localhost:5000/news')
-    //     .then(res => res.json()))
 
-    // if (isLoading) {
-    //     return "Loading";
-    // }
 
 
     const [news, setNews] = useState();
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch("http://localhost:5000/news")
             .then(res => res.json())
             .then(data => {
                 setNews(data)
-                // setLoading(false)
+                setLoading(false)
             })
     }, [])
 
-    // if (loading) {
-    //     return "Loading..."
-    // }
+    if (loading) {
+        return <Feature2Skeleton />
+    }
 
 
-    // if (isLoading) {
-    //     return "Loading";
-    // }
-    // console.log(news)
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
             {
@@ -46,6 +38,8 @@ const Features2 = () => {
                     </div>
                 </div>)
             }
+
+
         </div>
     );
 };

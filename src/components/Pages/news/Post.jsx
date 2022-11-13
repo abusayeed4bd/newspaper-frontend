@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import ShareButtons from '../../Shared/ShareButtons';
+import Spinner from '../../Shared/Spinner';
 
 const Post = () => {
 
@@ -11,7 +12,7 @@ const Post = () => {
         .then(res => res.json()))
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <Spinner />;
     }
     console.log(window.location.href);
     // console.log(document.getElementById("description").innerHTML(data?.content));

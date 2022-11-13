@@ -3,7 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <div>
+        <div className='h-fit'>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col ">

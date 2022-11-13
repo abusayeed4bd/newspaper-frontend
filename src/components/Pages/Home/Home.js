@@ -3,6 +3,7 @@ import Feature1 from './HomeSections/Feature1';
 import './Home.css'
 import Features2 from './HomeSections/Features2';
 import International from './HomeSections/International';
+import Feature2Skeleton from '../../SkeletonAnimation/Feature2Skeleton';
 
 const Home = () => {
 
@@ -27,6 +28,8 @@ const Home = () => {
                     <International />
                 </div>
             </section>
+
+            <Feature2Skeleton />
         </div>
 
 
