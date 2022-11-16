@@ -2,22 +2,29 @@ import { data } from 'autoprefixer';
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import Feature1Skeleton from './../../../SkeletonAnimation/Feature1Skeleton';
 
 const Feature1 = () => {
     const [news, setNews] = useState();
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
         fetch("http://localhost:5000/news")
             .then(res => res.json())
-            .then(data => setNews(data))
+            .then(data => {
+                setNews(data)
+                setLoading(false)
+            })
 
     }, [])
-
+    if (loading) {
+        return <Feature1Skeleton />;
+    }
 
 
     if (news) {
-        const feature = news[0];
+        const feature = news[news.length - 1];
 
 
 

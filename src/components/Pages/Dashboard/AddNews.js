@@ -74,14 +74,14 @@ const AddNews = () => {
 
             <form onSubmit={handleAddNews}>
 
-                <div className="title">
+                <div className="title py-2">
                     <label className="label">
                         <span className="label-text text-primary text-xl">Title</span>
                     </label>
                     <input name='title' type="text" placeholder="Title" className="input input-bordered border-primary rounded-sm w-full" required />
                 </div>
 
-                <div className="title">
+                <div className="title py-2">
                     <label className="label">
                         <span className="label-text text-primary text-xl">Description</span>
                     </label>
@@ -90,10 +90,11 @@ const AddNews = () => {
                         ref={editor}
                         value={content}
 
+
                         onChange={newContent => setContent(newContent)}
                     />
                 </div>
-                <div className="title">
+                <div className="title py-2">
                     <label className="label">
                         <span className="label-text text-primary text-xl">Category</span>
                     </label>
@@ -104,7 +105,7 @@ const AddNews = () => {
                         <option>Entertainment</option>
                     </select>
                 </div>
-                <div className="title">
+                <div className="title py-2">
                     <label className="label">
                         <span className="label-text text-primary text-xl">Image</span>
                     </label>

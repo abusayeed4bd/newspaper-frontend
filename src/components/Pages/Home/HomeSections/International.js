@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
+import CategorySkeleton from '../../../SkeletonAnimation/CategorySkeleton';
 
 const International = () => {
     const [news, setNews] = useState([]);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch("http://localhost:5000/news")
             .then(res => res.json())
             .then(data => {
                 setNews(data)
-                // setLoading(false)
+                setLoading(false)
             })
     }, [])
+
+    if (loading) {
+        return [1, 2, 3, 4].map(n => <CategorySkeleton />);
+    }
 
     return (
         <div>
             {
-                news.map(n => <>
+                [...news].reverse().map(n => <>
 
                     <div className='flex my-2 border-b border-dotted pb-1'>
                         <div className='w-[30%] mr-2'>
@@ -30,6 +35,7 @@ const International = () => {
                     </div>
                 </>)
             }
+
         </div>
     );
 };

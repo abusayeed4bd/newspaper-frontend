@@ -4,6 +4,8 @@ import './Home.css'
 import Features2 from './HomeSections/Features2';
 import International from './HomeSections/International';
 import Feature2Skeleton from '../../SkeletonAnimation/Feature2Skeleton';
+import Feature1Skeleton from '../../SkeletonAnimation/Feature1Skeleton';
+import CategorySkeleton from '../../SkeletonAnimation/CategorySkeleton';
 
 const Home = () => {
 
@@ -17,19 +19,19 @@ const Home = () => {
 
 
             <section className='pt-3 flex gap-2'>
-                <div className='lg:w-50'>
+                <div className='lg:w-[50%]'>
                     <h2 className="text-2xl font-semibold">National</h2>
                     <hr />
                     <International />
                 </div>
-                <div className='lg:w-50'>
+                <div className='lg:w-[50%]'>
                     <h2 className="text-2xl font-semibold">International</h2>
                     <hr />
                     <International />
                 </div>
             </section>
 
-            <Feature2Skeleton />
+
         </div>
 
 

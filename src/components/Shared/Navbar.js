@@ -12,6 +12,16 @@ const Navbar = () => {
     const handleSignout = () => {
         signOut(auth);
     }
+
+    const navIteam = <>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/">Internationl</Link></li>
+        <li><Link to="/">National</Link></li>
+        <li><Link to="/">Sports</Link></li>
+        <li><Link to="/archive">Archive</Link></li>
+        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
+
+    </>
     return (
         <div>
             {/* logo  */}
@@ -66,12 +76,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/">Internationl</Link></li>
-                        <li><Link to="/">National</Link></li>
-                        <li><Link to="/">Sports</Link></li>
-                        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-
+                        {navIteam}
 
                     </ul>
                 </div>

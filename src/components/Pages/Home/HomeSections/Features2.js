@@ -18,15 +18,17 @@ const Features2 = () => {
             })
     }, [])
 
+
+
     if (loading) {
         return <Feature2Skeleton />
     }
-
+    const filtertedFeatures = news.slice(-5, -1);
 
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
             {
-                news?.map(n => <div key={n._id}>
+                [...filtertedFeatures]?.reverse().map(n => <div key={n._id}>
 
                     <div className="card h-[200px] rounded-none bg-base-100 shadow-xl image-full relative">
                         <figure><img className='w-100' src={n.image} alt="Shoes" /></figure>

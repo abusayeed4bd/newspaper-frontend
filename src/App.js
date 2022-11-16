@@ -15,6 +15,7 @@ import Post from './components/Pages/news/Post';
 import NotFound from './components/Shared/NotFound';
 import ScrollToTop from './components/Shared/ScrollToTop';
 import RequireAuth from './components/Hooks/RequireAuth';
+import Archive from './components/Pages/Archive/Archive';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route index path="" element={<RequireAuth><AddNews></AddNews></RequireAuth>} />
           <Route path="manageuser" element={<RequireAuth><ManageUsers></ManageUsers></RequireAuth>} />
         </Route>
+
+        <Route path="/archive" element={<Archive />}></Route>
 
         <Route path="*" element={<NotFound />} />
 
