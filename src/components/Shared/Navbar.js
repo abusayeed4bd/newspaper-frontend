@@ -1,16 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../../assets/image/news-logo.png"
 import auth from './../../firebase.init';
 import { useAuthState } from "react-firebase-hooks/auth"
 import { signOut } from 'firebase/auth';
 
+
 const Navbar = () => {
 
     const [user] = useAuthState(auth);
+    const [searchField, setSearchField] = useState(false);
+    const [search, setSearch] = useState('')
+    const navigate = useNavigate();
+
 
     const handleSignout = () => {
         signOut(auth);
+    }
+
+    const handleSearch = e => {
+        e.preventDefault();
+
+        setSearch(e.target.search.value);
+
+        navigate(`/search?query=${search}`)
+        setSearchField(false)
+
+
+
     }
 
     const navIteam = <>
@@ -48,21 +65,12 @@ const Navbar = () => {
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li tabIndex={0}>
-                                <a>
-                                    Parent
-                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                                </a>
-                                <ul className="p-2 bg-neutral text-neutral-content">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black text-white rounded-box w-52">
+                            {navIteam}
 
                         </ul>
                     </div>
@@ -81,10 +89,30 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                    {/* <button onClick={()=> setSearchField(true)} className=''><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                    </svg>
+                    </svg></button> */}
+                    {
+                        searchField ?
+
+
+                            <form className='' onSubmit={handleSearch}>
+                                <div className="flex items-center">
+                                    <input className='rounded-l-sm text-primary p-2' type="text" name="search" id="" />
+
+                                    <button className='bg-white text-primary rounded-r-sm p-2'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                    </svg></button>
+                                </div>
+                            </form>
+
+
+
+                            :
+                            <button onClick={() => setSearchField(true)} className=''><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                            </svg></button>
+                    }
 
 
 

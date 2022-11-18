@@ -18,14 +18,14 @@ const Home = () => {
             </div>
 
 
-            <section className='pt-3 flex gap-2'>
-                <div className='lg:w-[50%]'>
-                    <h2 className="text-2xl font-semibold">National</h2>
+            <section className='pt-3 lg:flex gap-2'>
+                <div className='lg:w-[50%] px-4'>
+                    <h2 className="text-4xl font-semibold">National</h2>
                     <hr />
                     <International />
                 </div>
-                <div className='lg:w-[50%]'>
-                    <h2 className="text-2xl font-semibold">International</h2>
+                <div className='lg:w-[50%] px-4'>
+                    <h2 className="text-4xl font-semibold">International</h2>
                     <hr />
                     <International />
                 </div>

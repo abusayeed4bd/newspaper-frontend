@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import JoditEditor from 'jodit-react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../../firebase.init';
+import { toast } from 'react-toastify';
 
 const AddNews = () => {
     const editor = useRef(null);
@@ -57,7 +58,8 @@ const AddNews = () => {
                         }),
                     }).then(res => res.json())
                         .then(data => {
-                            console.log("added");
+
+                            toast.success("post added successfully");
                         })
                 }
             })
@@ -89,7 +91,7 @@ const AddNews = () => {
                     <JoditEditor
                         ref={editor}
                         value={content}
-
+                        defaultValue="hello world"
 
                         onChange={newContent => setContent(newContent)}
                     />

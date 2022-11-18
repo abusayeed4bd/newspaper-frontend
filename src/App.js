@@ -16,6 +16,9 @@ import NotFound from './components/Shared/NotFound';
 import ScrollToTop from './components/Shared/ScrollToTop';
 import RequireAuth from './components/Hooks/RequireAuth';
 import Archive from './components/Pages/Archive/Archive';
+import ManagePost from './components/Pages/Dashboard/ManagePost';
+import SearchResult from './components/Pages/SearchResult/SearchResult';
+import EditNews from './components/Pages/Dashboard/EditNews';
 
 function App() {
   return (
@@ -37,9 +40,12 @@ function App() {
 
           <Route index path="" element={<RequireAuth><AddNews></AddNews></RequireAuth>} />
           <Route path="manageuser" element={<RequireAuth><ManageUsers></ManageUsers></RequireAuth>} />
+          <Route path="managepost" element={<RequireAuth><ManagePost></ManagePost></RequireAuth>} />
+          <Route path="edit/:id" element={<RequireAuth><EditNews></EditNews></RequireAuth>} />
         </Route>
 
         <Route path="/archive" element={<Archive />}></Route>
+        <Route path="/search" element={<SearchResult />}></Route>
 
         <Route path="*" element={<NotFound />} />
 
