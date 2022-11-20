@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from './../../../firebase.init';
 import { toast } from 'react-toastify';
+import useToken from './../../Hooks/useToken';
 
 
 const Registration = () => {
@@ -14,6 +15,7 @@ const Registration = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile, updating, updateError] = useUpdateProfile(auth, { sendEmailVerification: true });
+    const [token] = useToken(user)
 
     const handleSignUp = async (e) => {
         e.preventDefault()

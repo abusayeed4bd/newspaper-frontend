@@ -1,13 +1,17 @@
 import React from 'react';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from './../../../firebase.init';
+import useToken from './../../Hooks/useToken';
 
 const SocialButton = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [token] = useToken(user)
 
     const handleGoogleLogin = () => {
         signInWithGoogle();
     }
+
+
 
     return (
         <div className="form-control ">

@@ -102,9 +102,10 @@ const AddNews = () => {
                     </label>
                     <select name='category' className="select rounded-sm input border-primary select-bordered w-full ">
                         <option disabled selected>Category</option>
-                        <option>Natioanl</option>
+                        <option>National</option>
                         <option>International</option>
                         <option>Entertainment</option>
+                        <option>Sports</option>
                     </select>
                 </div>
                 <div className="title py-2">

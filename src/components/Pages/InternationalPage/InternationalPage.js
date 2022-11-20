@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import CategoryPageSkeleton from '../../SkeletonAnimation/CategoryPageSkeleton';
+import CategorySkeleton from '../../SkeletonAnimation/CategorySkeleton';
+
+const InternationalPage = () => {
+    const [news, setNews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        fetch("http://localhost:5000/news/international")
+            .then(res => res.json())
+            .then(data => {
+                setNews(data)
+                setLoading(false)
+            })
+    }, [])
+
+    if (loading) {
+        return <CategoryPageSkeleton />;
+    }
+    return (
+        <div className='px-24 '>
+            <h2 className="text-2xl font-semibold py-2 text-center">Internatioanal</h2>
+            <div className="grid lg:grid-cols-4 gap-2">
+                {
+                    [...news]?.reverse().map(n => <div className="card card-compact border p-2  bg-base-100 rounded-none">
+                        <figure><img className='h-[200px] w-[400px]' src={n.image} alt="Shoes" /></figure>
+                        <div className="">
+                            <Link to={`/news/${n._id}`} className="text-lg hover:underline">{n.title}</Link>
+
+
+                        </div>
+                    </div>)
+                }
+            </div>
+        </div>
+    );
+};
+
+export default InternationalPage;

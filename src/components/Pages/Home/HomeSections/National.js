@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import CategorySkeleton from '../../../SkeletonAnimation/CategorySkeleton';
 
-const International = () => {
+const National = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch("http://localhost:5000/news/international")
+        fetch("http://localhost:5000/news/national")
             .then(res => res.json())
             .then(data => {
                 setNews(data)
@@ -18,7 +17,6 @@ const International = () => {
     if (loading) {
         return [1, 2, 3, 4].map(n => <CategorySkeleton />);
     }
-
     return (
         <div>
             {
@@ -29,7 +27,7 @@ const International = () => {
                             <img className='w-[200px] h-[100px]' src={n.image} alt="" />
                         </div>
                         <div className='w-[70%]'>
-                            <Link to={`/news/${n._id}`} className='text-lg font-medium hover:underline'>{n.title}</Link>
+                            <Link to={`news/${n._id}`} className='text-lg font-medium hover:underline'>{n.title}</Link>
 
                         </div>
                     </div>
@@ -40,4 +38,4 @@ const International = () => {
     );
 };
 
-export default International;
+export default National;

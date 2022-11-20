@@ -6,6 +6,10 @@ import International from './HomeSections/International';
 import Feature2Skeleton from '../../SkeletonAnimation/Feature2Skeleton';
 import Feature1Skeleton from '../../SkeletonAnimation/Feature1Skeleton';
 import CategorySkeleton from '../../SkeletonAnimation/CategorySkeleton';
+import National from './HomeSections/National';
+import { Link } from 'react-router-dom';
+import SportsPage from '../SportsPage/SportsPage';
+import Sports from './HomeSections/Sports';
 
 const Home = () => {
 
@@ -22,13 +26,25 @@ const Home = () => {
                 <div className='lg:w-[50%] px-4'>
                     <h2 className="text-4xl font-semibold">National</h2>
                     <hr />
-                    <International />
+                    <National />
+                    <div className="flex justify-end">
+                        <Link className='hover:underline' to="/national">See More>> </Link>
+                    </div>
                 </div>
                 <div className='lg:w-[50%] px-4'>
                     <h2 className="text-4xl font-semibold">International</h2>
                     <hr />
                     <International />
+                    <div className="flex justify-end">
+                        <Link className='hover:underline' to="/international">See More>>  </Link>
+                    </div>
                 </div>
+            </section>
+            <section>
+                <h2 className="text-4xl font-semibold pb-2 ">Sports</h2>
+                <hr />
+                <Sports />
+
             </section>
 
 

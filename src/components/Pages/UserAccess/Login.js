@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SocialButton from './SocialButton';
 import auth from './../../../firebase.init';
 import { useLocation } from 'react-router-dom';
+import useToken from './../../Hooks/useToken';
 
 const Login = () => {
 
@@ -13,6 +14,7 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token] = useToken(user)
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";

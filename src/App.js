@@ -19,6 +19,10 @@ import Archive from './components/Pages/Archive/Archive';
 import ManagePost from './components/Pages/Dashboard/ManagePost';
 import SearchResult from './components/Pages/SearchResult/SearchResult';
 import EditNews from './components/Pages/Dashboard/EditNews';
+import International from './components/Pages/Home/HomeSections/International';
+import InternationalPage from './components/Pages/InternationalPage/InternationalPage';
+import NationalPage from './components/Pages/NationalPage/NationalPage';
+import SportsPage from './components/Pages/SportsPage/SportsPage';
 
 function App() {
   return (
@@ -27,6 +31,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home></Home>} />
+        <Route path="/international" element={<InternationalPage></InternationalPage>} />
+        <Route path="/national" element={<NationalPage></NationalPage>} />
+        <Route path="/sports" element={<SportsPage></SportsPage>} />
 
         <Route path="/news/:id" element={<Post></Post>}></Route>
 

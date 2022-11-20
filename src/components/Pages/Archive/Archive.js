@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import ArchiveResult from './ArchiveResult';
+import { useNavigate } from 'react-router-dom';
 
 const Archive = () => {
     const [archiveSearch, setArchiveSearch] = useState('')
+    const navigate = useNavigate()
+
     const handleArchiveSearch = (e) => {
         setArchiveSearch(e.target.value)
     }
+
 
     const dateArr = archiveSearch.split("-");
     const date = `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`

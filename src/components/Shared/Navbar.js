@@ -10,21 +10,25 @@ const Navbar = () => {
 
     const [user] = useAuthState(auth);
     const [searchField, setSearchField] = useState(false);
-    const [search, setSearch] = useState('')
+
     const navigate = useNavigate();
 
 
     const handleSignout = () => {
         signOut(auth);
+        localStorage.removeItem("accessToken")
     }
 
     const handleSearch = e => {
         e.preventDefault();
 
-        setSearch(e.target.search.value);
-
-        navigate(`/search?query=${search}`)
-        setSearchField(false)
+        if (e.target.search.value == "") {
+            setSearchField(false)
+        } else {
+            navigate(`/search?query=${e.target.search.value}`)
+            e.target.reset();
+            setSearchField(false)
+        }
 
 
 
@@ -32,9 +36,9 @@ const Navbar = () => {
 
     const navIteam = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Internationl</Link></li>
-        <li><Link to="/">National</Link></li>
-        <li><Link to="/">Sports</Link></li>
+        <li><Link to="/international">Internationl</Link></li>
+        <li><Link to="/national">National</Link></li>
+        <li><Link to="/sports">Sports</Link></li>
         <li><Link to="/archive">Archive</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
 
@@ -76,9 +80,11 @@ const Navbar = () => {
                     </div>
 
                     {/* hamburger icon========================= */}
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
+                    <div className=''>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6  lg:block hidden">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </div>
 
                     {/* hamburger icon========================= */}
                 </div>

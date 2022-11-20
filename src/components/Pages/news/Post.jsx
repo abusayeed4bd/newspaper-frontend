@@ -38,7 +38,12 @@ const Post = () => {
             </div>
 
 
-            <p>Published on: {data.date}</p>
+            <div className="flex justify-between">
+                <p>Published on: {data.date}</p>
+                {
+                    data.editDate && <p>Last Edit on: {data.editDate}</p>
+                }
+            </div>
 
 
             <img src={data.image} alt="" />
